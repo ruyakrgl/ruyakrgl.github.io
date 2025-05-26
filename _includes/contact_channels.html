@@ -35,6 +35,18 @@
       alt="LinkedIn Icon"
     />
   </a>
+  {% endif %} {% if contact_channels.scholar and contact_channels.scholar != ""%}
+  <a
+    class="transition hover:scale-110 duration-300"
+    href="{{ contact_channels.scholar }}"
+    target="_blank"
+  >
+    <img
+      class="h-6 w-6"
+      src="{{'/assets/images/contact_channels/google-scholar.svg' | relative_url }}"
+      alt="Google Scholar Icon"
+    />
+  </a>
   {% endif %} {% if contact_channels.telegram %}
   <a
     class="transition hover:scale-110 duration-300"
