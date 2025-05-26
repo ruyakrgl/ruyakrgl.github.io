@@ -6,18 +6,9 @@ description: >-
   en diversas etapas del ciclo de desarrollo de aplicaciones.
 image: /assets/images/main.avif
 main_content: >
-  # Hello Friend. Hello World.
+  # Hello. I am Ruya.
 
-
-  **Solum remis procul; poenam, corde?** Te quoque facti agros, querorque,
-  excutis
-
-  quoque vestigia substricta caelestique posuisset litore: suaque. **Et
-  limine**, et
-
-  nimium nec io diemque vocat spicea et horror licet leto fortuna suis cum.
-  **Lecto viae, quod Naxos tumulos quoque.** Et illo de nati iuvenci oris habet,
-  perdidit parantur! **#Rails #Ruby #Python #HTML #Css #Js #AWS**
+  I am a fifth-year PhD student in the Electrical and Computer Engineering Department at the University of Michigan - Ann Arbor, where I am advised by Professor Necmiye Ozay. My research is mainly focused on ** combination of formal methods and machine learning**, where I am trying to combine the advantages of machine learning with formal methods to infer better specifications for systems. I am also interested in **personalization**, **safety guarantees**, and **control synthesis** of cyber-physical systems, especially in the context of autonomous vehicles.
 footer: true
 permalink: /
 ---
