@@ -1,5 +1,7 @@
 home:
-  contact_me: "You can contact me for any of this channels:"
+  contact_me: "Feel free to reach out to me using any of these channels:"
+  news_title: "Latest News"
+  see_more_news: "See more news ->"
   blog_title: "Blog: Last Posts"
   see_more_posts: "See More Posts ->"
   projects_title: "Last Projects"
