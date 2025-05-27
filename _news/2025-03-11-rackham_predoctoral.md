@@ -1,5 +1,7 @@
 ---
 layout: news
+title: Rackham Predoctoral Fellowship
+author: Me
 ---
 
 # Rackham Predoctoral Fellowship
