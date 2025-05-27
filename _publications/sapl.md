@@ -2,7 +2,7 @@
 layout: publication
 title: "Incorporating Logic in Online Preference Learning for Safe Personalization of Autonomous Vehicles"
 venue: "HSCC 2024"
-image: /assets/images/publications/sapl.png
+image: /assets/images/publications/sapl.jpg
 pdf: "/assets/files/sapl.pdf"
 bibtex: |
   @inproceedings{karagulle2024incorporating,
