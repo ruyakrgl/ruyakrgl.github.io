@@ -1,9 +1,9 @@
 ---
 layout: blog
-title: Blog
+title: The Idea Log
 nav: true
 footer: true
-description: This is the Awesome Jekyll Theme blog section.
+description: A collection of ideas, thoughts, and reflections.
 ---
 
 
