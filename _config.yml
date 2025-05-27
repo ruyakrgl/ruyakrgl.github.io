@@ -16,6 +16,8 @@ collections:
     output: true
   news:
     output: true
+  publications:
+    output: true
 
 ##
 # Contact Channels configuration
