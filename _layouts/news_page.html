@@ -3,8 +3,9 @@ layout: default
 ---
 
 <section class="container mx-auto pt-20 pb-10 lg:pt-[120px] lg:pb-20">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-    {% for news in site.news %}
+  <div class="flex flex-col gap-y-8">
+    {% assign sorted_news = site.news | sort: 'date' | reverse %}
+    {% for news in sorted_news %}
     {% include news_card.html news=news%}
     {% endfor %}
   </div>

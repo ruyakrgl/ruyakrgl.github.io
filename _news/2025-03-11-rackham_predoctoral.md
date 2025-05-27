@@ -1,6 +1,7 @@
 ---
 layout: news
 title: Rackham Predoctoral Fellowship
+date: 2025-03-11
 author: Me
 ---
 
