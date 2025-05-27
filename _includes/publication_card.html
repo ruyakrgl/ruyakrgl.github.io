@@ -31,27 +31,27 @@
       <div class="flex flex-wrap gap-4">
         {% if include.publication.pdf %}
         <a href="{{include.publication.pdf | relative_url}}" target="_blank" 
-           class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200">
-          📄 View PDF
+           class="bg-blue-600 hover:bg-blue-700 text-black px-4 py-2 rounded-lg font-medium transition-colors duration-200">
+          📄 PDF
         </a>
         {% endif %}
         
         {% if include.publication.bibtex %}
         <button onclick="copyBibtex('{{include.publication.title | slugify}}')" 
-                class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200">
+                class="bg-gray-600 hover:bg-gray-700 text-black px-4 py-2 rounded-lg font-medium transition-colors duration-200">
           📋 Copy BibTeX
         </button>
         {% endif %}
       </div>
     </div>
   </div>
-  
   <!-- Hidden bibtex for copying -->
   {% if include.publication.bibtex %}
-  <textarea id="bibtex-{{include.publication.title | slugify}}" class="sr-only">{{include.publication.bibtex}}</textarea>
+  <textarea id="bibtex-{{include.publication.title | slugify}}" style="position: absolute; left: -9999px; opacity: 0; height: 0; width: 0;">{{include.publication.bibtex}}</textarea>
   {% endif %}
 </div>
 
+{% unless page.bibtex_script_loaded %}
 <script>
 function copyBibtex(publicationId) {
   const bibtexElement = document.getElementById('bibtex-' + publicationId);
@@ -72,3 +72,5 @@ function copyBibtex(publicationId) {
   }
 }
 </script>
+{% assign page.bibtex_script_loaded = true %}
+{% endunless %}
