@@ -1,23 +1,10 @@
-<div class="flex flex-col justify-between">
-  <div class="flex flex-col justify-between max-w-lg">
-    <a href="{{include.news.url | relative_url}}" aria-label="News Url">
-      <div class="hover:opacity-90 transition duration-300 w-full h-60 bg-cover bg-center"
-        style="background-image: url('{{ news.image | default: 'https://picsum.photos/600/400/?blur' }}')">
-      </div>
-    </a>
-    <div class="pt-6">
-      <a href="{{site.url}}{{site.baseurl}}/category/{{include.news.categories[0] | replace: ' ', '-'| downcase}}"
-        aria-label="Category {{include.news.categories[0]}} url"
-        class="font-mulish text-sm hover:text-sky-400 text-gray-600">
-        {{ include.news.categories[0] | upcase }}
-      </a>
+<div class="rounded-lg hover:bg-gray-50 p-8 shadow">
+  <a href="{{include.news.url | relative_url}}">
+    <img src="{{include.news.image | relative_url}}" alt="image" class="object-cover w-full h-60" />
+    <p class="font-mulish text-gray-500 mt-6 mb-2 ">{{include.news.category | upcase}}</p>
+    <h2 class="text-2xl hover:underline font-bold my-2 text-gray-800">{{include.news.title}}</h2>
+    <div class="font-mulish">
+      {{include.news.excerpt}}
     </div>
-    <a href="{{include.news.url | relative_url}}" aria-label="News Url">
-      <h2 class="hover:underline decoration-2 underline-offset-2 font-semibold text-2xl text-gray-800 pt-6">{{
-        include.news.title }}</h2>
-    </a>
-  </div>
-  <span class="text-sm text-gray-500 pt-6">
-    {{ include.news.date | date: "%-d/%-m/%Y" }}
-  </span>
+  </a>
 </div>
