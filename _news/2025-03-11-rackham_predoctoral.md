@@ -1,6 +1,7 @@
 ---
 layout: news
 title: Rackham Predoctoral Fellowship
+category : school
 author: Me
 ---
 

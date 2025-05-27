@@ -1,6 +1,7 @@
 ---
 layout: news
 title: Thesis Proposal Exam Passed
+category: school
 author: Me
 ---
 
