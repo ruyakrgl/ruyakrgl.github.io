@@ -8,7 +8,6 @@ description: A collection of personal interests.
 Life is a balance between work and personal interests. You can find my interests other than research and engineering.
 
 ## Painting
-
 When I do painting, I remember the feeling of being in the zone. My favorite and oldest pastime activity, I use its help whenever I feel stressed and confused. You can find some of my works I completed during my Ph.D years.
 
 <br/><img src='/assets/images/painting.png'>
