@@ -1,15 +1,13 @@
 <div class="rounded-lg hover:bg-gray-50 p-8 shadow w-full">
   <!-- Venue at top left -->
   <div class="mb-6">
-    {% if include.publication.venue and include.publication.venue != "" %}
-      <p class="font-mulish text-gray-500 text-sm">{{include.publication.venue | upcase}}</p>
-    {% endif %}
+    <p class="font-mulish text-gray-500 text-sm">{{include.publication.venue | upcase | default: "VENUE"}}</p>
   </div>
   
   <!-- Main content area with image on left, text on right -->
-  <div class="flex flex-col lg:flex-row gap-8">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
     <!-- Visual/Image - Fixed 1/3 width -->
-    <div class="lg:flex-shrink-0 lg:w-1/3">
+    <div class="lg:col-span-1">
       {% if include.publication.image %}
         <img src="{{include.publication.image | relative_url}}" alt="{{include.publication.title}}" class="object-cover w-full h-32 lg:h-40 rounded-lg" />
       {% else %}
@@ -19,8 +17,8 @@
       {% endif %}
     </div>
     
-    <!-- Content area - Flexible 2/3 width -->
-    <div class="lg:flex-grow flex flex-col justify-between">
+    <!-- Content area - Fixed 2/3 width -->
+    <div class="lg:col-span-2 col-start-2">
       <!-- Title and excerpt -->
       <div>
         <h2 class="text-2xl font-bold mb-4 text-gray-800">{{include.publication.title}}</h2>
@@ -33,21 +31,21 @@
       <div class="flex flex-wrap gap-3 justify-end">
         {% if include.publication.pdf %}
         <a href="{{include.publication.pdf | relative_url}}" target="_blank" 
-           class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+           class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
           📄 PDF
         </a>
         {% endif %}
         
         {% if include.publication.slides %}
         <a href="{{include.publication.slides | relative_url}}" target="_blank" 
-           class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+           class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
           📊 Slides
         </a>
         {% endif %}
         
         {% if include.publication.bibtex %}
         <button onclick="copyBibtex('{{include.publication.title | slugify}}')" 
-                class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+                class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
           📋 BibTeX
         </button>
         {% endif %}
