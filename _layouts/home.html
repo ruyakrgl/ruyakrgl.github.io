@@ -38,7 +38,8 @@ layout: default
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-16 py-8 md:py-16"
     >
-      {% for news in site.news limit:3 %} {% include news_card.html news=news%}
+      {% assign sorted_news = site.news | sort: 'date' | reverse %}
+      {% for news in sorted_news limit:3 %} {% include news_card.html news=news%}
       {% endfor %}
     </div>
 
