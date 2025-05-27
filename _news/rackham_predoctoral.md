@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: news
 ---
 
 # Marc 2025 - Rackham Predoctoral Fellowship
