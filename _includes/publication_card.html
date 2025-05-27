@@ -5,9 +5,9 @@
   </div>
   
   <!-- Main content area with image on left, text on right -->
-  <div class="grid grid-cols-3 gap-4">
+  <div class="grid grid-cols-3 gap-8">
     <!-- Visual/Image - Fixed 1/3 width -->
-    <div class="col-span-1">
+    <div class="col-span-1 col-start-1">
       {% if include.publication.image %}
         <img src="{{include.publication.image | relative_url}}" alt="{{include.publication.title}}" class="object-cover w-full h-32 lg:h-40 rounded-lg" />
       {% else %}
@@ -31,21 +31,21 @@
       <div class="flex flex-wrap gap-3 justify-end">
         {% if include.publication.pdf %}
         <a href="{{include.publication.pdf | relative_url}}" target="_blank" 
-           class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+           class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium">
           📄 PDF
         </a>
         {% endif %}
         
         {% if include.publication.slides %}
         <a href="{{include.publication.slides | relative_url}}" target="_blank" 
-           class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+           class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg font-medium">
           📊 Slides
         </a>
         {% endif %}
         
         {% if include.publication.bibtex %}
         <button onclick="copyBibtex('{{include.publication.title | slugify}}')" 
-                class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+                class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium">
           📋 BibTeX
         </button>
         {% endif %}
@@ -69,12 +69,12 @@ function copyBibtex(publicationId) {
       const button = event.target;
       const originalText = button.innerHTML;
       button.innerHTML = '✅ Copied!';
-      button.classList.remove('bg-gray-500', 'hover:bg-gray-600');
+      button.classList.remove('bg-orange-500', 'hover:bg-orange-600');
       button.classList.add('bg-green-500', 'hover:bg-green-600');
       setTimeout(() => {
         button.innerHTML = originalText;
         button.classList.remove('bg-green-500', 'hover:bg-green-600');
-        button.classList.add('bg-gray-500', 'hover:bg-gray-600');
+        button.classList.add('bg-orange-500', 'hover:bg-orange-600');
       }, 2000);
     }).catch(function(err) {
       console.error('Could not copy text: ', err);
