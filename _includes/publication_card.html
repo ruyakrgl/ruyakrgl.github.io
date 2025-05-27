@@ -6,8 +6,8 @@
   
   <!-- Main content area with image on left, text on right -->
   <div class="flex flex-col lg:flex-row gap-8">
-    <!-- Visual/Image -->
-    <div class="w-full lg:w-1/3 flex-shrink-0">
+    <!-- Visual/Image - Fixed 1/3 width -->
+    <div class="lg:w-1/3 flex-shrink-0">
       {% if include.publication.image %}
         <img src="{{include.publication.image | relative_url}}" alt="{{include.publication.title}}" class="object-cover w-full h-32 lg:h-40 rounded-lg" />
       {% else %}
@@ -17,8 +17,8 @@
       {% endif %}
     </div>
     
-    <!-- Content area -->
-    <div class="w-full lg:w-2/3 flex flex-col justify-between">
+    <!-- Content area - Fixed 2/3 width -->
+    <div class="lg:w-2/3 flex flex-col justify-between">
       <!-- Title and excerpt -->
       <div>
         <h2 class="text-2xl font-bold mb-4 text-gray-800">{{include.publication.title}}</h2>
@@ -27,24 +27,32 @@
         </div>
       </div>
       
-      <!-- Buttons at bottom -->
-      <div class="flex flex-wrap gap-4">
+      <!-- Buttons aligned to the right -->
+      <div class="flex flex-wrap gap-3 justify-end">
         {% if include.publication.pdf %}
         <a href="{{include.publication.pdf | relative_url}}" target="_blank" 
-           class="bg-blue-600 hover:bg-blue-700 text-black px-4 py-2 rounded-lg font-medium transition-colors duration-200">
+           class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
           📄 PDF
+        </a>
+        {% endif %}
+        
+        {% if include.publication.slides %}
+        <a href="{{include.publication.slides | relative_url}}" target="_blank" 
+           class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+          📊 Slides
         </a>
         {% endif %}
         
         {% if include.publication.bibtex %}
         <button onclick="copyBibtex('{{include.publication.title | slugify}}')" 
-                class="bg-gray-600 hover:bg-gray-700 text-black px-4 py-2 rounded-lg font-medium transition-colors duration-200">
-          📋 Copy BibTeX
+                class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+          📋 BibTeX
         </button>
         {% endif %}
       </div>
     </div>
   </div>
+  
   <!-- Hidden bibtex for copying -->
   {% if include.publication.bibtex %}
   <textarea id="bibtex-{{include.publication.title | slugify}}" style="position: absolute; left: -9999px; opacity: 0; height: 0; width: 0;">{{include.publication.bibtex}}</textarea>
@@ -61,10 +69,12 @@ function copyBibtex(publicationId) {
       const button = event.target;
       const originalText = button.innerHTML;
       button.innerHTML = '✅ Copied!';
-      button.style.backgroundColor = '#10b981';
+      button.classList.remove('bg-gray-500', 'hover:bg-gray-600');
+      button.classList.add('bg-green-500', 'hover:bg-green-600');
       setTimeout(() => {
         button.innerHTML = originalText;
-        button.style.backgroundColor = '';
+        button.classList.remove('bg-green-500', 'hover:bg-green-600');
+        button.classList.add('bg-gray-500', 'hover:bg-gray-600');
       }, 2000);
     }).catch(function(err) {
       console.error('Could not copy text: ', err);
