@@ -4,7 +4,7 @@ layout: 404
 ---
 # 404
 
-**Page not found :(**
+**The page you are looking for is not here :(**
 
 The requested page could not be found.
 
