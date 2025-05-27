@@ -47,7 +47,7 @@ layout: default
     <div class="pt-4 text-center">
       <a
         class="font-mulish text-lg hover:text-sky-400 hover:underline font-bold"
-        href="{{ news_page.url | relative_url }}"
+        href="{{ /news.url | relative_url }}"
       >
         {{ site.data[site.active_lang].strings.home.see_more_news | default:
         site.data['en'].strings.home.see_more_news}}
