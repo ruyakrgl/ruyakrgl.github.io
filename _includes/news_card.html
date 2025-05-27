@@ -3,10 +3,8 @@
     <p class="font-mulish text-gray-500">{{include.news.category | upcase}}</p>
     <p class="font-mulish text-gray-400 text-sm">{{include.news.date | date: "%B %-d, %Y"}}</p>
   </div>
-  <a href="{{include.news.url | relative_url}}">
-    <h2 class="text-2xl hover:underline font-bold my-2 text-gray-800">{{include.news.title}}</h2>
-    <div class="font-mulish">
-      {{include.news.excerpt}}
-    </div>
-  </a>
+  <h2 class="text-2xl font-bold my-2 text-gray-800">{{include.news.title}}</h2>
+  <div class="font-mulish">
+    {{include.news.excerpt}}
+  </div>
 </div>
