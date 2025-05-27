@@ -9,9 +9,9 @@
     <!-- Visual/Image -->
     <div class="lg:w-1/3 flex-shrink-0">
       {% if include.publication.image %}
-        <img src="{{include.publication.image | relative_url}}" alt="{{include.publication.title}}" class="object-cover w-full h-48 lg:h-64 rounded-lg" />
+        <img src="{{include.publication.image | relative_url}}" alt="{{include.publication.title}}" class="object-cover w-full h-48 lg:h-40 rounded-lg" />
       {% else %}
-        <div class="w-full h-48 lg:h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+        <div class="w-full h-48 lg:h-40 bg-gray-200 rounded-lg flex items-center justify-center">
           <span class="text-gray-400">No image available</span>
         </div>
       {% endif %}
