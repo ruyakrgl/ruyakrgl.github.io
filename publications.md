@@ -1,6 +1,6 @@
 ---
 layout: publications
-title: 
+title: Peer-Reviewed Works
 nav: true
 description: A collection of projects I have worked on.
 ---

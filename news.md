@@ -1,5 +1,5 @@
 ---
-layout: news
+layout: news_page
 title: Recent Updates
 nav: true
 footer: true
