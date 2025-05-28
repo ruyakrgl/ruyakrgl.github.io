@@ -1,35 +1,75 @@
 {%- assign current_page_url = page.url | relative_url -%}
-<nav class="absolute top-0 left-0 right-0 flex w-full flex-wrap items-center justify-between py-4">
-  <div class="flex w-full flex-wrap items-center justify-between px-5">
-    <a class="flex" href="{{site.baseurl}}/" aria-label="Andres Chacon - Developer">
-      <img src="{{site.logo | relative_url}}" alt="webpage logo" class="block h-8 w-auto">
-      <p class="pl-4 hidden md:block text-lg font-bold">{{site.title}}</p>
-    </a>
+<nav class="absolute top-0 left-0 right-0 w-full z-50">
+  <div class="flex w-full flex-wrap items-center justify-between py-4 px-5">
+    <!-- Mobile layout -->
+    <div class="flex items-center justify-between md:hidden w-full">
+      <a class="flex items-center" href="{{site.baseurl}}/" aria-label="{{site.title}} - Home">
+        <img src="{{site.logo | relative_url}}" alt="webpage logo" class="block h-6 w-auto">
+        <p class="pl-2 text-sm font-bold">{{site.title}}</p>
+      </a>
+      
+      <button id="mobile-menu-toggle" class="p-2 rounded-md hover:bg-gray-100">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
 
-    <div class="flex divide-x">
+    <!-- Desktop layout -->
+    <div class="hidden md:flex items-center justify-between w-full">
+      <a class="flex" href="{{site.baseurl}}/" aria-label="{{site.title}} - Home">
+        <img src="{{site.logo | relative_url}}" alt="webpage logo" class="block h-8 w-auto">
+        <p class="pl-4 text-lg font-bold">{{site.title}}</p>
+      </a>
+
+      <div class="flex divide-x">
+        {% for page in site.pages %}
+        {% if page.nav %}
+        <div><a class="px-4 hover:text-sky-400 {% if page.url == current_page_url %}font-bold{% endif %}"
+            href="{{ page.url | relative_url }}">{{ page.title | default: page.name }}</a></div>
+        {% endif%}
+        {% endfor %}
+
+        {% if site.languages.size > 1 %}
+        <div class="language-switcher relative">
+          <button class="current-language px-4 hover:text-sky-400">
+            {{ site.active_lang | upcase }}
+          </button>
+
+          <div class="dropdown-content absolute hidden mt-2 py-2 bg-white rounded shadow-lg z-20">
+            {% for tongue in site.languages %}
+            {% if tongue != site.active_lang %}
+            <a class="p-4 hover:text-sky-400" {% static_href
+              %}href="{% if tongue == site.default_lang %}{{site.baseurl}}{{page.url}}{% else %}{{site.baseurl}}/{{ tongue }}{{page.url}}{% endif %}"
+              {% endstatic_href %}>{{ tongue | upcase }}</a>{%- if forloop.last == false -%}{{" "}}{{ site.langsep }}{%-
+            endif -%}
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Mobile menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden mt-3 py-3 border-t border-gray-200 bg-white/90 backdrop-blur-sm">
       {% for page in site.pages %}
       {% if page.nav %}
-      <div><a class="px-4 hover:text-sky-400 {% if page.url == current_page_url %}font-bold{% endif %}"
-          href="{{ page.url | relative_url }}">{{ page.title | default: page.name }}</a></div>
+      <a class="block py-2 hover:text-sky-400 transition-colors {% if page.url == current_page_url %}font-bold text-sky-500{% endif %}"
+          href="{{ page.url | relative_url }}">{{ page.title | default: page.name }}</a>
       {% endif%}
       {% endfor %}
 
       {% if site.languages.size > 1 %}
-      <div class="language-switcher relative">
-        <button class="current-language px-4 hover:text-sky-400">
-          {{ site.active_lang | upcase }}
-        </button>
-
-        <div class="dropdown-content absolute hidden mt-2 py-2 bg-white rounded shadow-lg z-20">
-          {% for tongue in site.languages %}
-          {% if tongue != site.active_lang %}
-          <a class="p-4 hover:text-sky-400" {% static_href
-            %}href="{% if tongue == site.default_lang %}{{site.baseurl}}{{page.url}}{% else %}{{site.baseurl}}/{{ tongue }}{{page.url}}{% endif %}"
-            {% endstatic_href %}>{{ tongue | upcase }}</a>{%- if forloop.last == false -%}{{" "}}{{ site.langsep }}{%-
-          endif -%}
-          {% endif %}
-          {% endfor %}
-        </div>
+      <div class="mt-3 pt-3 border-t border-gray-200">
+        <span class="block text-sm text-gray-500 mb-2">Language:</span>
+        {% for tongue in site.languages %}
+        {% if tongue != site.active_lang %}
+        <a class="block py-1 hover:text-sky-400" {% static_href
+          %}href="{% if tongue == site.default_lang %}{{site.baseurl}}{{page.url}}{% else %}{{site.baseurl}}/{{ tongue }}{{page.url}}{% endif %}"
+          {% endstatic_href %}>{{ tongue | upcase }}</a>
+        {% endif %}
+        {% endfor %}
       </div>
       {% endif %}
     </div>
@@ -37,6 +77,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // Desktop language switcher
       const currentLangButton = document.querySelector('.current-language');
       const dropdownContent = document.querySelector('.dropdown-content');
 
@@ -51,6 +92,31 @@
           }
         });
       }
+
+      // Mobile menu toggle
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', function () {
+          mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (event) {
+          if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+
+        // Close mobile menu when window is resized to desktop size
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 768) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+      }
     });
+  </script>
   </script>
 </nav>
