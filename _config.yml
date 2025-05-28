@@ -16,13 +16,17 @@ typewriter_effect: false
 collections:
   projects:
     output: true
-  news:
-    output: true
   publications:
+    output: true
+  sofware:
+    output: true
+  news:
     output: true
   outreach:
     output: true
   personal:
+    output: true
+  blog:
     output: true
 
 ##
