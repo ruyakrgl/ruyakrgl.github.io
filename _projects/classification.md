@@ -2,6 +2,7 @@
 layout: project
 title: Classification using Temporal Logic
 image: 
+category: completed
 tags:
   - signal temporal logic
   - classification

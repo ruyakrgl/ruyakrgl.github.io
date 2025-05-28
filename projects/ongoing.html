@@ -1,0 +1,43 @@
+---
+layout: default
+title: Ongoing Projects
+category: ongoing
+permalink: /projects/ongoing/
+---
+
+<section class="container mx-auto pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+  {% comment %} Get all unique categories from projects {% endcomment %}
+  {% assign project_categories = site.projects | map: 'category' | uniq | sort %}
+  {% if project_categories.size > 0 %}
+  <div
+    class="flex flex-wrap justify-center border-gray-400 border-y mb-4 md:mb-12"
+  >
+    <a
+      href="{{site.url}}{{site.baseurl}}/1projects"
+      aria-label="All Projects"
+      class="block font-mulish hover:text-sky-400 p-4"
+    >
+      ALL
+    </a>
+    {% for category in project_categories %}
+    <a
+      href="{{site.url}}{{site.baseurl}}/projects/{{category | replace: ' ', '-' | downcase}}"
+      aria-label="Category {{category}} page"
+      class="block font-mulish hover:text-sky-400 p-4 {% if category == page.category %}font-black{% endif %}"
+    >
+      {{ category | upcase }}
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  <h1 class="text-3xl font-bold mb-8 text-center">Ongoing Projects</h1>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+    {% for project in site.projects %}
+      {% if project.category == "ongoing" %}
+        {% include project_card.html project=project %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

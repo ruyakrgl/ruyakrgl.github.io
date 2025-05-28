@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Button color classes for publication cards */
+.bg-gray-600 {
+  background-color: rgb(75 85 99);
+}
+.hover\:bg-gray-700:hover {
+  background-color: rgb(55 65 81);
+}
+.bg-green-600 {
+  background-color: rgb(22 163 74);
+}
+.hover\:bg-green-700:hover {
+  background-color: rgb(21 128 61);
+}
+.bg-orange-600 {
+  background-color: rgb(234 88 12);
+}
+.hover\:bg-orange-700:hover {
+  background-color: rgb(194 65 12);
+}
+.text-white {
+  color: rgb(255 255 255);
+}
+
 @keyframes gentle-bounce {
   0% {
     transform: translateY(0);

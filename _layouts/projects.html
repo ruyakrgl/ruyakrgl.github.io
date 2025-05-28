@@ -1,10 +1,49 @@
 ---
 layout: default
 ---
+
+
 <section class="container mx-auto pt-20 pb-10 lg:pt-[120px] lg:pb-20">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-    {% for project in site.projects %}
-    {% include project_card.html project=project%}
+  {% comment %} Get all unique categories from projects {% endcomment %}
+  {% assign project_categories = site.projects | map: 'category' | uniq | sort | reverse %}
+  {% if project_categories.size > 0 %}
+  <div
+    class="flex flex-wrap justify-center border-gray-400 border-y mb-4 md:mb-12"
+  >
+    <a
+      href="{{site.url}}{{site.baseurl}}/1projects"
+      aria-label="All Projects"
+      class="block font-mulish hover:text-sky-400 p-4 {% unless page.category %}font-black{% endunless %}"
+    >
+      ALL
+    </a>
+    {% for category in project_categories %}
+    <a
+      href="{{site.url}}{{site.baseurl}}/projects/{{category | replace: ' ', '-' | downcase}}"
+      aria-label="Category {{category}} page"
+      class="block font-mulish hover:text-sky-400 p-4 {% if category == page.category %}font-black{% endif %}"
+    >
+      {{ category | upcase }}
+    </a>
     {% endfor %}
   </div>
+  {% endif %}
+  
+  {% comment %} Display all projects with ongoing first {% endcomment %}
+  {% unless page.category %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+      {% assign sorted_projects = site.projects | sort: 'category' | reverse %}
+      {% for project in sorted_projects %}
+        {% include project_card.html project=project %}
+      {% endfor %}
+    </div>
+  {% else %}
+    {% comment %} Show only projects from specific category {% endcomment %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+      {% assign filtered_projects = site.projects | where: 'category', page.category | sort: 'title' %}
+      {% for project in filtered_projects %}
+        {% include project_card.html project=project %}
+      {% endfor %}
+    </div>
+  {% endunless %}
 </section>

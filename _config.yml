@@ -1,6 +1,8 @@
 title: Ruya Karagulle
 logo: /assets/images/logo.avif
-baseurl: /awesome-jekyll-theme
+baseurl: /ruyakrgl.github.io
+
+theme: awesome-jekyll-theme 
 
 ##
 # Typewritter configuration.
@@ -17,6 +19,10 @@ collections:
   news:
     output: true
   publications:
+    output: true
+  outreach:
+    output: true
+  personal:
     output: true
 
 ##

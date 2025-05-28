@@ -3,8 +3,15 @@ module.exports = {
   darkMode: "class",
   content: [
     '*.html',
+    '*.md',
     '_layouts/**/*.html',
-    '_includes/**/*.html'
+    '_includes/**/*.html',
+    '_posts/**/*.md',
+    '_projects/**/*.md',
+    '_publications/**/*.md',
+    '_news/**/*.md',
+    '_outreach/**/*.md',
+    '_personal/**/*.md'
   ],
   theme: {
     fontFamily: {

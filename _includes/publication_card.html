@@ -1,24 +1,26 @@
 <div class="rounded-lg hover:bg-gray-50 p-8 shadow w-full">
   <!-- Venue at top left -->
   <div class="mb-6">
-    <p class="font-mulish text-orange-500 text-sm">{{include.publication.venue | upcase | default: "VENUE"}}</p>
+    {% if include.publication.venue and include.publication.venue != "" %}
+      <p class="font-mulish text-sky-500 text-sm">{{include.publication.venue | upcase}}</p>
+    {% endif %}
   </div>
   
   <!-- Main content area with image on left, text on right -->
-  <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-20">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 lg:gap-x-8">
     <!-- Visual/Image - Fixed 1/3 width -->
-    <div class="col-span-1 col-start-1 lg:col-start-1 lg:col-span-1">
+    <div class="lg:col-span-1">
       {% if include.publication.image %}
-        <img src="{{include.publication.image | relative_url}}" alt="{{include.publication.title}}" class="object-cover w-full h-32 lg:h-40 rounded-lg" />
+        <img src="{{include.publication.image | relative_url}}" alt="{{include.publication.title}}" class="object-cover w-full h-32 lg:h-48 rounded-lg" />
       {% else %}
-        <div class="w-full h-32 lg:h-40 bg-gray-200 rounded-lg flex items-center justify-center">
+        <div class="w-full h-32 lg:h-48 bg-gray-200 rounded-lg flex items-center justify-center">
           <span class="text-gray-400 text-sm">No image available</span>
         </div>
       {% endif %}
     </div>
     
     <!-- Content area - Fixed 2/3 width -->
-    <div class="col-span-1 col-start-1 lg:col-start-2 lg:col-span-2 flex flex-col justify-between">
+    <div class="lg:col-span-2 flex flex-col justify-between">
       <!-- Title and excerpt -->
       <div>
         <h2 class="text-2xl font-bold mb-4 text-gray-800">{{include.publication.title}}</h2>
@@ -28,25 +30,25 @@
       </div>
       
       <!-- Buttons aligned to the right -->
-      <div class="flex flex-wrap gap-3 justify-end">
-        {% if include.publication.pdf %}
-        <a href="{{include.publication.pdf | relative_url}}" target="_blank" 
-           class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium">
-          📄 PDF
-        </a>
-        {% endif %}
-        
+      <div class="flex flex-wrap justify-end gap-x-8 ">
         {% if include.publication.slides %}
         <a href="{{include.publication.slides | relative_url}}" target="_blank" 
-           class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg font-medium">
-          📊 Slides
+           class="bg-teal-600 hover:bg-teal-700 text-white px-2 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+          slides
+        </a>
+        {% endif %}
+
+        {% if include.publication.pdf %}
+        <a href="{{include.publication.pdf | relative_url}}" target="_blank" 
+           class="bg-orange-600 hover:bg-orange-700 text-white px-2 py-2 rounded-lg font-small transition-colors duration-200 shadow-sm">
+          PDF
         </a>
         {% endif %}
         
         {% if include.publication.bibtex %}
         <button onclick="copyBibtex('{{include.publication.title | slugify}}')" 
-                class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium">
-          📋 BibTeX
+                class="bg-rose-500 hover:bg-rose-600 text-white px-2 py-2 rounded-lg font-medium transition-colors duration-200 shadow-sm">
+          BibTeX
         </button>
         {% endif %}
       </div>
@@ -69,12 +71,12 @@ function copyBibtex(publicationId) {
       const button = event.target;
       const originalText = button.innerHTML;
       button.innerHTML = '✅ Copied!';
-      button.classList.remove('bg-orange-500', 'hover:bg-orange-600');
+      button.classList.remove('bg-orange-600', 'hover:bg-orange-700');
       button.classList.add('bg-green-500', 'hover:bg-green-600');
       setTimeout(() => {
         button.innerHTML = originalText;
         button.classList.remove('bg-green-500', 'hover:bg-green-600');
-        button.classList.add('bg-orange-500', 'hover:bg-orange-600');
+        button.classList.add('bg-orange-600', 'hover:bg-orange-700');
       }, 2000);
     }).catch(function(err) {
       console.error('Could not copy text: ', err);

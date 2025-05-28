@@ -1,25 +1,28 @@
 ---
 layout: publication
-title: "Incorporating Logic in Online Preference Learning for Safe Personalization of Autonomous Vehicles"
-venue: "HSCC 2024"
-image: /assets/images/publications/sapl.png
-pdf: "/assets/files/sapl.pdf"
+title: "Classification of Driving Behaviors Using STL Formulas: A Comparative Study"
+venue: "FORMATS 2022"
+image: /assets/images/publications/classification.png
+pdf: "/assets/files/stl_driving_classification.pdf"
 bibtex: |
-  @inproceedings{karagulle2024incorporating,
-    title={Incorporating Logic in Online Preference Learning for Safe Personalization of Autonomous Vehicles},
-    author={Karagulle, Ruya and Ozay, Necmiye and Arechiga, Nikos and Decastro, Jonathan and Best, Andrew},
-    booktitle={Proceedings of the 27th ACM International Conference on Hybrid Systems: Computation and Control},
-    pages={1--11},
-    year={2024},
-    organization={ACM},
-    doi={10.1145/3641513.3650129}
-  }
-project: safe_preference_learning
+  @InProceedings{10.1007/978-3-031-15839-1_9,
+    author="Karagulle, Ruya
+    and Ar{\'e}chiga, Nikos
+    and DeCastro, Jonathan
+    and Ozay, Necmiye",
+    editor="Bogomolov, Sergiy
+    and Parker, David",
+    title="Classification of Driving Behaviors Using STL Formulas: A Comparative Study",
+    booktitle="Formal Modeling and Analysis of Timed Systems",
+    year="2022",
+    publisher="Springer International Publishing",
+    address="Cham",
+    pages="153--162",}
+project: classification
 tags:
   - signal temporal logic
-  - preference learning
   - safe autonomy
-date: 2024-05-12
+date: 2022-09-01
 ---
 This work introduces an active preference learning method that ensures adherence to traffic rules for autonomous vehicles by decreasing the number of question asked to the user.
 

@@ -2,6 +2,7 @@
 layout: project
 title: Safe Preference Learning 
 image: /assets/images/safe_preference_learning.png
+category: ongoing
 tags:
   - preference learning
   - safety guarantees

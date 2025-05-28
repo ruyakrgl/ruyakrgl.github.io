@@ -11,6 +11,3 @@ main_content: >
 footer: true
 permalink: /
 ---
-## Hello World
-
-TBD. This is a placeholder for the main content of the homepage.

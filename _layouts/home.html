@@ -43,18 +43,16 @@ layout: default
       {% endfor %}
     </div>
 
-    {% assign news_page = site.pages | where: 'layout', 'news' | first %} {% if
-    news_page %}
+    {% assign news_page = site.pages | where: 'layout', 'news' | first %} 
     <div class="pt-4 text-center">
       <a
         class="font-mulish text-lg hover:text-sky-400 hover:underline font-bold"
-        href="{{ /news.url | relative_url }}"
+        href="{{ '/4news' | relative_url }}"
       >
         {{ site.data[site.active_lang].strings.home.see_more_news | default:
         site.data['en'].strings.home.see_more_news}}
       </a>
     </div>
-    {% endif %}
   </div>
 </section>
 {% endif %} 
@@ -107,7 +105,7 @@ layout: default
     <div class="pt-4 text-center">
       <a
         class="font-mulish text-lg hover:text-sky-400 hover:underline font-bold"
-        href="{{'/projects' | relative_url }}"
+        href="{{'/1projects' | relative_url }}"
       >
         {{ site.data[site.active_lang].strings.home.see_more_projects | default:
         site.data['en'].strings.home.see_more_projects }}
@@ -134,7 +132,7 @@ replace: "\r", "" | replace: "\t", "" %} {% if trimmed_content != "" %}
     aria-label="Jump to main section"
     class="dot w-3 h-3 block rounded-full border-2 border-gray-800 bg-gray-800 hover:scale-125"
   ></a>
-  {% if site.news.size > 0 %}
+  {% if site.news and site.news.size > 0 %}
   <a
     href="#news"
     aria-label="Jump to news section"

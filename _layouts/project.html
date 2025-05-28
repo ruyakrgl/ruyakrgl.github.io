@@ -3,20 +3,31 @@ layout: default
 ---
 
 
-<link rel="stylesheet" href="{{ '/assets/css/monokai.css'}}">
+<link rel="stylesheet" href="{{ './assets/css/monokai.css' | relative_url }}">
 <div class="container mx-auto">
   <div id="post" class="prose max-w-[75ch] prose-neutral mx-auto pb-10 pt-20 lg:pt-[90px] lg:pb-20">
     <h1 class="text-left text-2xl font-bold md:text-5xl text-black">{{page.title}}</h1>
 
-    <img src="{{page.image}}" alt="{{page.title}}">
+    {% if page.image %}
+    <img src="{{page.image | relative_url}}" alt="{{page.title}}" class="w-full rounded-lg">
+    {% endif %}
 
     <div class="my-6">
       {{content}}
     </div>
 
-    <div class="mx-auto py-8">
-      {% include sharing.html %}
+    {% comment %} Get publications related to this project {% endcomment %}
+    {% assign related_publications = site.publications | where: 'project', page.slug | sort: 'date' | reverse %}
+    {% if related_publications.size > 0 %}
+    <div class="mt-12 not-prose">
+      <h2 class="text-2xl font-bold mb-6 text-black">Related Publications</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {% for publication in related_publications %}
+          {% include publication_card_grid.html publication=publication %}
+        {% endfor %}
+      </div>
     </div>
+    {% endif %}
 
   </div>
 </div>
