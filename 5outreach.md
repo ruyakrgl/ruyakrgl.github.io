@@ -2,6 +2,7 @@
 layout: personals
 title: Giving Back
 nav: true
+footer: true
 description: A collection of outreach projects I have worked on.
 ---
 

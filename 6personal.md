@@ -2,6 +2,7 @@
 layout: personals
 title: Off-the-Clock
 nav: true
+footer: true
 description: A collection of personal interests.
 ---
 # Off-the-Clock

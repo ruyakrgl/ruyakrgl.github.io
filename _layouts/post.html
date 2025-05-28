@@ -35,13 +35,6 @@ layout: default
       {{content}}
     </div>
 
-    <div class="mx-auto py-8">
-      <p class="text-center font-extrabold italic">
-        {{ site.data[site.active_lang].strings.post.share | default:
-        site.data['en'].strings.post.share}}
-      </p>
-      {% include sharing.html %}
-    </div>
 
     <div class="font-mulish flex justify-center mb-10">
       {% if page.previous.url %}
@@ -52,6 +45,5 @@ layout: default
       {% endif %}
     </div>
 
-    {% include comment_system.html %}
   </div>
 </div>
