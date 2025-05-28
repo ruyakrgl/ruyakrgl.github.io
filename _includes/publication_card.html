@@ -1,4 +1,4 @@
-<div class="rounded-lg hover:bg-gray-50 p-8 shadow w-full">
+<div class="rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 p-8 shadow dark:shadow-gray-900 w-full dark:bg-gray-800 transition-colors duration-200">
   <!-- Venue at top left -->
   <div class="mb-6">
     {% if include.publication.venue and include.publication.venue != "" %}
@@ -13,8 +13,9 @@
       {% if include.publication.image %}
         <img src="{{include.publication.image | relative_url}}" alt="{{include.publication.title}}" class="object-cover w-full h-32 lg:h-48 rounded-lg" />
       {% else %}
-        <div class="w-full h-32 lg:h-48 bg-gray-200 rounded-lg flex items-center justify-center">
-          <span class="text-gray-400 text-sm">No image available</span>
+        <div class="w-full h-32 lg:h-48 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center">
+          <!-- <span class="text-gray-400 dark:text-gray-300 text-sm">The image is still in me-review. Imagine a really cool graphic here that perfectly explains everything, then lower your expectations just a little.</span> -->
+          <img src="./assets/images/no_image_available.png" alt="image" class="object-cover w-full h-32 lg:h-48 rounded-lg" />
         </div>
       {% endif %}
     </div>

@@ -2,7 +2,7 @@
 layout: publication
 title: "Classification of Driving Behaviors Using STL Formulas: A Comparative Study"
 venue: "FORMATS 2022"
-image: /assets/images/publications/classification.png
+image: 
 pdf: "/assets/files/stl_driving_classification.pdf"
 bibtex: |
   @InProceedings{10.1007/978-3-031-15839-1_9,
