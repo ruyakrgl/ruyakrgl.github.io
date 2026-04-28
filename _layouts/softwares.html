@@ -5,7 +5,7 @@ layout: default
   <div class="flex flex-col gap-y-8">
     {% if site.softwares.size > 0 %}
       {% for software in site.softwares %}
-        {% include software_card.html software=software %}
+        {% include software.html software=software %}
       {% endfor %}
     {% else %}
       <p class="text-center text-gray-500"> Welcome to Code Corner—
