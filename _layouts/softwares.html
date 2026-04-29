@@ -2,16 +2,21 @@
 layout: default
 ---
 <section class="container mx-auto pt-20 pb-10 lg:pt-[120px] lg:pb-20">
-  <div class="flex flex-col gap-y-8">
-    {% if site.softwares.size > 0 %}
-      {% for software in site.softwares %}
-        {% include software.html software=software %}
+  {% assign favorites = site.softwares | where: 'favorite', true | sort: 'date' | reverse %}
+  {% assign rest = site.softwares | where_exp: 'item', 'item.favorite != true' | sort: 'date' | reverse %}
+  {% if site.softwares.size > 0 %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+      {% for software in favorites %}
+        {% include software_card.html software=software %}
       {% endfor %}
-    {% else %}
-      <p class="text-center text-gray-500"> Welcome to Code Corner—
-    The future showcase of my coding projects! 
+      {% for software in rest %}
+        {% include software_card.html software=software %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-center text-gray-500"> Welcome to Code Corner—
+    The future showcase of my coding projects!
     (Or, you know, it will be… right after I refactor, comment, and make my code look less like it was written minutes before a deadline.)
     Right now, this page is as empty as a `pass` statement. </p>
-    {% endif %}
-  </div>
+  {% endif %}
 </section>
