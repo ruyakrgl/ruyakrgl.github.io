@@ -40,3 +40,38 @@
 a.gentle-clicked {
   animation: gentle-bounce 0.3s ease-out; /* Shorter, smoother animation */
 }
+
+/* Centered favorites row */
+.software-favorites-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem 2rem;
+}
+.software-favorites-item {
+  flex: 0 0 100%;
+}
+@media (min-width: 768px) {
+  .software-favorites-item {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+@media (min-width: 1024px) {
+  .software-favorites-item {
+    flex: 0 0 calc(33.333% - 1.334rem);
+  }
+}
+
+/* Favorite software card */
+.software-card--favorite {
+  background-color: rgb(255 237 213);
+}
+.software-card--favorite:hover {
+  background-color: rgb(254 215 170);
+}
+.dark .software-card--favorite {
+  background-color: rgba(249 115 22 / 0.12);
+}
+.dark .software-card--favorite:hover {
+  background-color: rgba(249 115 22 / 0.22);
+}

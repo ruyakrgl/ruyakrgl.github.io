@@ -239,3 +239,43 @@ nav,
 .dark #main .prose strong {
   color: rgb(249 115 22) !important; /* orange-500 - same color in both modes */
 }
+
+/* Mobile menu dropdown positioning */
+.top-14 { top: 3.5rem; }
+.w-48 { width: 12rem; }
+.right-4 { right: 1rem; }
+
+/* Centered favorites row */
+.software-favorites-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem 2rem;
+}
+.software-favorites-item {
+  flex: 0 0 100%;
+}
+@media (min-width: 768px) {
+  .software-favorites-item {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+@media (min-width: 1024px) {
+  .software-favorites-item {
+    flex: 0 0 calc(33.333% - 1.334rem);
+  }
+}
+
+/* Favorite software card */
+.software-card--favorite {
+  background-color: rgb(255 237 213);
+}
+.software-card--favorite:hover {
+  background-color: rgb(254 215 170);
+}
+.dark .software-card--favorite {
+  background-color: rgba(249 115 22 / 0.12);
+}
+.dark .software-card--favorite:hover {
+  background-color: rgba(249 115 22 / 0.22);
+}
