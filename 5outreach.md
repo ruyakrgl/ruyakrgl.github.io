@@ -51,6 +51,9 @@ Academic Service</h1>
 <!-- <div class="bg-gray-50 rounded-xl p-6 mb-6"> -->
 <div class="bg-white rounded-xl shadow-lg p-8 mb-6 border-l-4 border-sky-500">
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+    <span class="bg-white px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">ITSC (2026)</span>
+    <span class="bg-white px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">IROS (2026)</span>
+    <span class="bg-white px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">Automatica (2025)</span>
     <span class="bg-white px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">RA-L (2025)</span>
     <span class="bg-white px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">CDC (2025)</span>
     <span class="bg-white px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">ICRA (2025)</span>
